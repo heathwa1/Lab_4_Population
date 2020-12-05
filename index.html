@@ -1,0 +1,183 @@
+<html>
+<head>
+	<title>Moving to Pierce County</title>
+ 	<!-- the Leaflet CSS -->
+ 	<!-- <link rel="stylesheet" type="text/css" href="styles.css"></link> -->
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+			integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+			crossorigin="anonymous">
+			</script>
+
+
+</head>
+
+<body>
+	<style>
+	.map {
+	  height: 400px;
+	  width: 100%;
+	}
+	</style>
+	<!-- <div class ="wrapper"> -->
+	<!-- <h1>Moving trends in Pierce County</h1>
+	<section><p>The population in Pierce County has been growing over the past few years. It's interesting to see the age ranges of people in different areas. -->
+	<div id='map' height=70vh; width=auto;> </div>
+			<!-- </div> -->
+
+	<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiaC13YXJyZW4iLCJhIjoiY2tnemJmaG54MDQzNjJ3cnN2Mmg1MmF2cyJ9.AMeyJ2g8BQiBQ2ZyH9OyJw';
+	var map = new mapboxgl.Map({
+	container: 'map',
+	style: 'mapbox://styles/h-warren/ckhb086zb01fa19ldf6ccrnfr', // stylesheet location
+	center: [-122.400, 47.219], // starting position [lng, lat]
+	zoom: 9 // starting zoom
+	});
+
+	map.on("load",function() {
+
+		// map.addSource("King", {
+		// 	"type":"geojson",
+		// 	"data":"KingMobility2.json"
+		// });
+		// map.addLayer({
+		// 	"id":"kingMoved",
+		// 	"type":"fill",
+		// 	"source":"King",
+		// 	"paint": {
+		// 		"fill-color":[
+		// 			'interpolate',
+		// 			['linear'],
+		// 			['get','Pct_Moved'],
+		// 			0,
+		// 			'#F2F12D',
+		// 			11,
+		// 			'#eed322',
+		// 			15,
+		// 			'#e6b71e',
+		// 			18.5,
+		// 			'#da9c20',
+		// 			25,
+		// 			'#ca8323',
+		// 			70,
+		// 			'#b86b25',
+		// 			100,
+		// 			'#a25626'
+		//
+		// 		],
+		// 		"fill-opacity":1
+		//
+		// 	}
+		//
+		// });
+		map.addSource("Pierce", {
+			"type":"geojson",
+			"data":"PierceMobility2.json"
+		});
+		map.addLayer ({
+			"id":"pierceMoved",
+			"type":"fill",
+			"source":"Pierce",
+			"paint": {
+				"fill-color": [
+					"interpolate",
+					["linear"],
+					["get","Pct_Moved"],
+					0,
+					'#F2F12D',
+					11,
+					'#eed322',
+					13,
+					'#e6b71e',
+					17,
+					'#da9c20',
+					22,
+					'#ca8323',
+					53,
+					'#b86b25',
+					100,
+					'#a25626'
+				],
+				"fill-opacity":1
+			}
+		});
+		// map.addSource("Kitsap",{
+		// 	"type":"geojson",
+		// 	"data":"KitsapMobility2.json"
+		// });
+		// map.addLayer({
+		// 	"id":"kitsapMoved",
+		// 	"type":"fill",
+		// 	"source":"Kitsap",
+		// 	"paint": {
+		// 		"fill-color": [
+		// 			'interpolate',
+		// 			['linear'],
+		// 			['get','Pct_Moved'],
+		// 			0,
+		// 			'#F2F12D',
+		// 			12,
+		// 			'#eed322',
+		// 			13,
+		// 			'#e6b71e',
+		// 			18,
+		// 			'#da9c20',
+		// 			26,
+		// 			'#ca8323',
+		// 			49,
+		// 			'#b86b25',
+		// 			100,
+		// 			'#a25626'
+		//
+		// 		],
+		// 		"fill-opacity":1
+		// 	}
+		// });
+		// map.addSource("Thurston",{
+		// 	"type":"geojson",
+		// 	"data":"ThurstonMobility2.json"
+		// });
+		// map.addLayer({
+		// 	"id":"thurstonMoved",
+		// 	"type":"fill",
+		// 	"source":"Thurston",
+		// 	"paint": {
+		// 		"fill-color": [
+		// 			'interpolate',
+		// 			['linear'],
+		// 			['get','Pct_Moved'],
+		// 			0,
+		// 			'#F2F12D',
+		// 			11,
+		// 			'#eed322',
+		// 			17,
+		// 			'#e6b71e',
+		// 			19,
+		// 			'#da9c20',
+		// 			24,
+		// 			'#ca8323',
+		// 			44,
+		// 			'#b86b25',
+		// 			100,
+		// 			'#a25626'
+		//
+		// 		],
+		// 		"fill-opacity":1
+		// 	}
+		//
+		// });
+	});
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
